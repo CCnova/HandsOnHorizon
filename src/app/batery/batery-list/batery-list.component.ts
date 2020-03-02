@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Batery } from '../batery.model';
+import { BateryService } from 'src/app/batery.service';
 
 @Component({
   selector: 'app-batery-list',
@@ -9,7 +10,14 @@ import { Batery } from '../batery.model';
 export class BateryListComponent implements OnInit {
   bateries: Batery[];
 
-  constructor() {}
+  constructor(private _bateryServ: BateryService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getBateries();
+    console.log(this.bateries);
+  }
+
+  getBateries() {
+    this.bateries = this._bateryServ.getAllBateries();
+  }
 }
