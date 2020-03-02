@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { SurfistComponent } from './surfist/surfist.component';
 import { SurfistsListComponent } from './surfist/surfists-list/surfists-list.component';
 import { SurfistFormComponent } from './surfist/surfist-form/surfist-form.component';
+import { BateryComponent } from './batery/batery.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SurfistFormComponent } from './surfist/surfist-form/surfist-form.compon
     HeaderComponent,
     SurfistComponent,
     SurfistsListComponent,
-    SurfistFormComponent
+    SurfistFormComponent,
+    BateryComponent
   ],
   imports: [
     BrowserModule,
