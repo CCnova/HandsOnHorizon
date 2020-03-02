@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SurfistComponent } from './surfist/surfist.component';
+import { SurfistsListComponent } from './surfist/surfists-list/surfists-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SurfistComponent
+    SurfistComponent,
+    SurfistsListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,6 +12,11 @@ export class SurfistsListComponent implements OnInit {
   constructor(private _surfistService : SurfistService) {}
 
   ngOnInit() {
+    this.getSurfists();
+  }
+
+  getSurfists() {
+    console.log("buscando os surfistas");
     this.surfists = this._surfistService.getAllSurfists();
   }
 }

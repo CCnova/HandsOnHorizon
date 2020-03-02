@@ -1,0 +1,14 @@
+<table *ngIf="surfists" class="table">
+  <thead>
+    <th scope="col">#</th>
+    <th scope="col">Nome</th>
+    <th scope="col">Pontos</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let surf of surfists">
+      <th scope="row">{{ surf.id }}</th>
+      <td>{{ surf.name }}</td>
+      <td>{{ surf.points }}</td>
+    </tr>
+  </tbody>
+</table>
