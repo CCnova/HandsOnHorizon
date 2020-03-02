@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-surfist-form',
@@ -10,7 +11,10 @@ export class SurfistFormComponent {
   newHeroName: string;
   submitted: Boolean = false;
 
-  onSubmit() {
+  onSubmit(surfistF: NgForm) {
     this.submitted = true;
+    console.log(this.newHeroName);
+
+    surfistF.reset();
   }
 }
