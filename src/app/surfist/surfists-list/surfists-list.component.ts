@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { SurfistService } from 'src/app/surfist.service';
-import { Surfist } from '../surfist.model';
+import { Component, OnInit } from "@angular/core";
+import { SurfistService } from "src/app/surfist.service";
+import { Surfist } from "../surfist.model";
 
 @Component({
-  templateUrl: './surfists-list.component.html',
-  styleUrls: ['./surfists-list.component.css']
+  selector: 'app-surfists-list',
+  templateUrl: "./surfists-list.component.html",
+  styleUrls: ["./surfists-list.component.css"]
 })
 export class SurfistsListComponent implements OnInit {
   surfists: Surfist[];
 
-  constructor(private _surfistService : SurfistService) {}
+  constructor(private _surfistService: SurfistService) {}
 
   ngOnInit() {
     this.getSurfists();
   }
 
   getSurfists() {
-    console.log("buscando os surfistas");
     this.surfists = this._surfistService.getAllSurfists();
   }
 }
