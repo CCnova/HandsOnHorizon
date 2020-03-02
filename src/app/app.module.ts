@@ -9,6 +9,7 @@ import { SurfistComponent } from './surfist/surfist.component';
 import { SurfistsListComponent } from './surfist/surfists-list/surfists-list.component';
 import { SurfistFormComponent } from './surfist/surfist-form/surfist-form.component';
 import { BateryComponent } from './batery/batery.component';
+import { BateryListComponent } from './batery/batery-list/batery-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BateryComponent } from './batery/batery.component';
     SurfistComponent,
     SurfistsListComponent,
     SurfistFormComponent,
-    BateryComponent
+    BateryComponent,
+    BateryListComponent
   ],
   imports: [
     BrowserModule,
