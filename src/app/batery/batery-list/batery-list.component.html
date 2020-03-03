@@ -24,7 +24,7 @@
       </p>
 
       <app-batery-form [bateryId]="bat.id"></app-batery-form>
-      <app-wave-form [bateryId]="bat.id"></app-wave-form>
+      <app-wave-form [bateryId]="bat.id" (newScoreAdded)="bateriesChanged()"></app-wave-form>
     </div>
   </div>
 </div>

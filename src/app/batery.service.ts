@@ -11,9 +11,8 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class BateryService implements OnInit {
-  bateries: Batery[] = BATERIES_DATA;
-  waves: Wave[] = WAVES_DATA;
-
+  initialBateries: Batery[] = BATERIES_DATA;
+  initialWaves: Wave[] = WAVES_DATA;
   constructor() { }
 
   ngOnInit() {
@@ -21,7 +20,7 @@ export class BateryService implements OnInit {
   }
 
   getAllBateries(): Observable<Batery[]> {
-    return of(this.bateries);
+    return of(BATERIES_DATA);
   }
 
   registerNewWave(bateryId: number,part: string, scores: string) {
@@ -29,12 +28,12 @@ export class BateryService implements OnInit {
     const newWaveScores = scores.split(',').map(x => +x);
 
     const newWave: Wave = {
-      id: this.waves[this.waves.length - 1].id + 1,
+      id: this.initialWaves[this.initialWaves.length - 1].id + 1,
       surfists: newWaveParticipants,
       scores: newWaveScores
     }
 
-    for(let bat of this.bateries) {
+    for(let bat of BATERIES_DATA) {
       if(bat.id === bateryId) {
         bat.waves.push(newWave);
       }
@@ -44,18 +43,22 @@ export class BateryService implements OnInit {
   }
 
   registerNewScore(bateryId: number, waveId: number, surfistName: string, score: number) {
-    for(let bat of this.bateries) {
-      if(bat.id === bateryId) {
-        for(let wave of bat.waves) {
-          if(wave.id === waveId) {
-            wave.surfists.push(surfistName);
-            wave.scores.push(score);
-            console.log(wave.surfists);
-            console.log(wave.scores);
+    for(let i = 0; i < this.initialBateries.length; i++) {
+      if(this.initialBateries[i].id === bateryId) {
+        for(let j = 0; j < this.initialBateries[i].waves.length; j++) {
+          if(this.initialBateries[i].waves[j].id === waveId) {
+            this.initialBateries[i].waves[j].surfists.push(surfistName);
+            this.initialBateries[i].waves[j].scores.push(score);
+
+            console.log(this.initialBateries);
           }
         }
       }
     }
+  }
+
+  updateBateries() {
+    return this.initialBateries;
   }
 }
 

@@ -21,4 +21,10 @@ export class BateryListComponent implements OnInit {
       this.bateries = bats;
     });
   }
+
+  bateriesChanged() {
+    this.bateries = this._bateryServ.updateBateries();
+
+    console.log(this.bateries);
+  }
 }
