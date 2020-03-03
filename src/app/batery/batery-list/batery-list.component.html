@@ -18,10 +18,13 @@
       <h5 class="card-title">Bateria {{ bat.id }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">Vencedor: {{ bat.winner }}</h6>
       <p *ngFor="let wave of bat.waves" class="card-text">
-          Participantes: {{ wave.surfists }}
+          Onda {{ wave.id }} <br>
+          Participantes: {{ wave.surfists }} <br>
+          Notas: {{ wave.scores }}
       </p>
 
       <app-batery-form [bateryId]="bat.id"></app-batery-form>
+      <app-wave-form></app-wave-form>
     </div>
   </div>
 </div>

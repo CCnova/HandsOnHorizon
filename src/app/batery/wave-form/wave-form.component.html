@@ -1,0 +1,12 @@
+<h4>Cadastre uma nota em uma onda</h4>
+<form #waveForm="ngForm" (ngSubmit)="onSubmit(waveForm)">
+  <div class="form-group">
+    <label for="waveNumber">Digite numero da onda:</label>
+    <input type="text" [(ngModel)]="waveNumberString" class="form-control" id="waveNumber" name="number" required placeholder="Escreva o numero da onda">
+    <label for="waveNumber">Digite nome do surfista:</label>
+    <input type="text" [(ngModel)]="surfistName" class="form-control" id="surfistName" name="name" required placeholder="Escreva o nome do surfista">
+    <label for="waveNumber">Digite a nota:</label>
+    <input type="text" [(ngModel)]="newScoreString" class="form-control" id="newScore" name="score" required placeholder="Escreva a nova nota">
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar Onda</button>
+</form>
