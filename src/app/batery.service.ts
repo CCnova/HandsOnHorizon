@@ -5,6 +5,7 @@ import { WAVES_DATA } from './batery/mock-waves';
 
 import { Batery } from './batery/batery.model';
 import { Wave } from './batery/wave.model';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class BateryService implements OnInit {
 
   }
 
-  getAllBateries(): Batery[] {
-    return this.bateries;
+  getAllBateries(): Observable<Batery[]> {
+    return of(this.bateries);
   }
 
   registerNewWave(bateryId: number,part: string, scores: string) {
@@ -40,6 +41,21 @@ export class BateryService implements OnInit {
     }
 
     alert('Onda Registrada com sucesso!');
+  }
+
+  registerNewScore(bateryId: number, waveId: number, surfistName: string, score: number) {
+    for(let bat of this.bateries) {
+      if(bat.id === bateryId) {
+        for(let wave of bat.waves) {
+          if(wave.id === waveId) {
+            wave.surfists.push(surfistName);
+            wave.scores.push(score);
+            console.log(wave.surfists);
+            console.log(wave.scores);
+          }
+        }
+      }
+    }
   }
 }
 

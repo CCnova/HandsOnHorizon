@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { BateryService } from 'src/app/batery.service';
 
 
 @Component({
@@ -9,10 +10,15 @@ import { NgForm } from '@angular/forms';
 })
 export class WaveFormComponent {
   waveNumberString: string;
-  newScoreString: string;
   surfistName: string;
+  newScoreString: string;
+  @Input() bateryId: number;
 
-  constructor() {}
+  constructor(private _batService: BateryService) {}
 
-  onSubmit(f: NgForm) {}
+  onSubmit(f: NgForm) {
+    this._batService.registerNewScore(this.bateryId ,parseInt(this.waveNumberString), this.surfistName, parseInt(this.newScoreString));
+
+    f.reset();
+  }
 }
