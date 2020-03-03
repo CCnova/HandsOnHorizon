@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BateryService } from '../../batery.service';
 import { NgForm } from '@angular/forms';
 
@@ -10,10 +10,13 @@ import { NgForm } from '@angular/forms';
 export class BateryFormComponent {
   newWaveParticipantsString: string;
   newWaveScoresString: string;
+  @Input() bateryId: number;
 
   constructor(private _batService: BateryService) {}
 
   onSubmit(f: NgForm) {
+    this._batService.registerNewWave(this.bateryId, this.newWaveParticipantsString, this.newWaveScoresString);
+
     f.reset();
   }
 }

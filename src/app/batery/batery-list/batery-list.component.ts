@@ -14,7 +14,6 @@ export class BateryListComponent implements OnInit {
 
   ngOnInit() {
     this.getBateries();
-    console.log(this.bateries);
   }
 
   getBateries() {
