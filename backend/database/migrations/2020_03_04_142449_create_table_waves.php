@@ -15,6 +15,8 @@ class CreateTableWaves extends Migration
     {
         Schema::create('waves', function (Blueprint $table) {
             $table->id();
+            $table->string('scores');
+            $table->string('participants');
             $table->timestamps();
         });
     }

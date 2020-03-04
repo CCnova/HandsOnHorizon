@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableBateries extends Migration
+class UpdateTableWaves extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTableBateries extends Migration
      */
     public function up()
     {
-        Schema::create('bateries', function (Blueprint $table) {
+        Schema::create('waves', function (Blueprint $table) {
             $table->id();
-            $table->string('wavesId');
-            $table->string('winner');
+            $table->string('scores');
+            $table->string('participants');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTableBateries extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bateries');
+        Schema::dropIfExists('waves');
     }
 }
