@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::namespace('API')->name('api.')->group(function() {
+    Route::get('/surfists', 'SurfistController@index')->name('surfists');
+});
+
+Route::namespace('API')->name('api.')->group(function() {
+    Route::get('/bateries', 'BateruController@index')->name('bateries');
+});
+
+Route::namespace('API')->name('api.')->group(function() {
+    Route::get('/waves', 'WaveController@index')->name('waves');
+});
