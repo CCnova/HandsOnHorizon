@@ -11,6 +11,6 @@ class WaveSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(\App\Wave::class, 15)->create();
     }
 }

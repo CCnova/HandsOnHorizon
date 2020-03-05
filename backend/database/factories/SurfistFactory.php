@@ -5,8 +5,9 @@
 use App\Model;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(\App\Surfist::class, function (Faker $faker) {
     return [
-        //
+        'name' => $faker->name,
+        'points' => $faker->numerify('#,#,#'),
     ];
 });

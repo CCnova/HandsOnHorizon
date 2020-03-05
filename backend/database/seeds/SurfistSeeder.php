@@ -11,6 +11,6 @@ class SurfistSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(\App\Surfist::class, 10)->create();
     }
 }
