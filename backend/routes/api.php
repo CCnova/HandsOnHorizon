@@ -32,7 +32,7 @@ Route::namespace('Api')->name('api.')->group(function() {
         Route::get('/', 'BateryController@index')->name('index_bateries');
         Route::get('/{id}', 'BateryController@show')->name('single_bateries');
 
-        Route::post('/', 'BateryController@store')->name('store_products');
+        Route::post('/', 'BateryController@store')->name('store_Bateries');
     });
 });
 
