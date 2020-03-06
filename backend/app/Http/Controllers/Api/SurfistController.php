@@ -15,6 +15,11 @@ class SurfistController extends Controller
         $this -> surfist = $surfist;
     }
 
+    public function waves()
+    {
+        return $this->belongsToMany('App\Wave');
+    }
+
     public function index()
     {
 

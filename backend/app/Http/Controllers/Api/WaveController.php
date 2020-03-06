@@ -15,6 +15,16 @@ class WaveController extends Controller
         $this -> wave = $wave;
     }
 
+    public function bateries()
+    {
+        return $this->belongsTo('App\Batery', 'bateryId');
+    }
+
+    public function surfists()
+    {
+        return $this->hasMany('App\Surfist');
+    }
+
     public function index()
     {
         return response()->json($this->wave->paginate(15));
