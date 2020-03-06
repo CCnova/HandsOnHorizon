@@ -24,6 +24,7 @@ Route::namespace('Api')->name('api.')->group(function() {
         Route::get('/{id}', 'SurfistController@show')->name('single_surfists');
 
         Route::post('/', 'SurfistController@store')->name('store_surfists');
+        Route::put('/{id}', 'SurfistController@update')->name('update_surfists');
     });
 });
 
@@ -32,7 +33,8 @@ Route::namespace('Api')->name('api.')->group(function() {
         Route::get('/', 'BateryController@index')->name('index_bateries');
         Route::get('/{id}', 'BateryController@show')->name('single_bateries');
 
-        Route::post('/', 'BateryController@store')->name('store_Bateries');
+        Route::post('/', 'BateryController@store')->name('store_bateries');
+        Route::put('/{id}', 'BateryController@update')->name('update_bateries');
     });
 });
 
@@ -42,5 +44,6 @@ Route::namespace('Api')->name('api.')->group(function() {
         Route::get('/{id}', 'WaveController@show')->name('single_waves');
 
         Route::post('/', 'WaveController@store')->name('store_waves');
+        Route::put('/{id}', 'WaveController@update')->name('update_waves');
     });
 });

@@ -25,4 +25,21 @@ class WaveController extends Controller
         $data = ['data' => $id];
         return response()->json($data);
     }
+
+    public function store(Request $request)
+    {
+        $waveData = $request -> all();
+        $this->wave->create($waveData);
+
+        return response()->json(['msg' => 'Onda criada!'], 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $waveData = $request -> all();
+        $wave = $this->wave->find($id);
+        $wave->update($waveData);
+
+        return response()->json(['msg' => 'Onda atualizada!'], 201);
+    }
 }

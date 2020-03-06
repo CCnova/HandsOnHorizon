@@ -29,6 +29,18 @@ class SurfistController extends Controller
 
     public function store(Request $request)
     {
-        dd($request -> all());
+        $surfistData = $request -> all();
+        $this->surfist->create($surfistData);
+
+        return response()->json(['msg' => 'Surfista criado!'], 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $surfistData = $request -> all();
+        $surfist = $this->surfist->find($id);
+        $surfist->update($surfistData);
+
+        return response()->json(['msg' => 'Surfista atualizado!'], 201);
     }
 }

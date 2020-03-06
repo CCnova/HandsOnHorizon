@@ -25,4 +25,21 @@ class BateryController extends Controller
         $data = ['data' => $id];
         return response()->json($data);
     }
+
+    public function store(Request $request)
+    {
+        $bateryData = $request -> all();
+        $this->batery->create($bateryData);
+
+        return response()->json(['msg' => 'Bateria criada!'], 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $bateryData = $request -> all();
+        $batery = $this->batery->find($id);
+        $batery->update($bateryData);
+
+        return response()->json(['msg' => 'Bateria atualizada!'], 201);
+    }
 }
