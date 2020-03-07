@@ -13,4 +13,8 @@ export class WaveService {
   getAllWaves() {
     return this.http.get<Wave[]>(this.wavesUrl);
   }
+
+  getWaveById(waveId: number) {
+    return this.http.get<Wave>(this.wavesUrl + `/${waveId}`);
+  }
 }

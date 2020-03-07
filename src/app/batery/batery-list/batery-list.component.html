@@ -13,15 +13,11 @@
   </tbody>
 </table> -->
 <div class="container-fluid" *ngIf="bateries">
-  <div *ngFor="let bat of bateries" class="card" style="width: 18rem;">
+  <div *ngFor="let bat of bateries; let i = index" class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">Bateria {{ bat.id }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">Vencedor: {{ bat.winner }}</h6>
-      <p *ngFor="let wave of bat.waves" class="card-text">
-          Onda {{ wave.id }} <br>
-          Participantes: {{ wave.surfists }} <br>
-          Notas: {{ wave.scores }}
-      </p>
+      <app-wave-list [showWavesId]="wavesId[i]"></app-wave-list>
 
       <app-batery-form [bateryId]="bat.id"></app-batery-form>
       <app-wave-form [bateryId]="bat.id" (newScoreAdded)="bateriesChanged()"></app-wave-form>

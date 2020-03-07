@@ -9,6 +9,7 @@ import { BateryService } from 'src/app/batery.service';
 })
 export class BateryListComponent implements OnInit {
   bateries: Batery[];
+  wavesId: number[][] = [];
 
   constructor(private _bateryServ: BateryService) {}
 
@@ -19,7 +20,10 @@ export class BateryListComponent implements OnInit {
   getBateries() {
     this._bateryServ.getAllBateries().subscribe(paginationData => {
       this.bateries = paginationData.data;
-      console.log(this.bateries);
+
+      for(let bat of this.bateries) {
+        this.wavesId.push(bat.wavesId.split(',').map(x=>+x));
+      }
     });
   }
 

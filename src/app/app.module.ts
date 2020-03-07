@@ -13,6 +13,7 @@ import { BateryComponent } from './batery/batery.component';
 import { BateryListComponent } from './batery/batery-list/batery-list.component';
 import { BateryFormComponent } from './batery/batery-form/batery-form.component';
 import { WaveFormComponent } from './batery/wave-form/wave-form.component';
+import { WaveListComponent } from './batery/wave-list/wave-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { WaveFormComponent } from './batery/wave-form/wave-form.component';
     BateryComponent,
     BateryListComponent,
     BateryFormComponent,
-    WaveFormComponent
+    WaveFormComponent,
+    WaveListComponent
   ],
   imports: [
     BrowserModule,
