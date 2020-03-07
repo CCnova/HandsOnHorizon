@@ -17,6 +17,8 @@ export class SurfistsListComponent implements OnInit {
   }
 
   getSurfists() {
-    this.surfists = this._surfistService.getAllSurfists();
+    this._surfistService.getAllSurfists().subscribe(paginationData => {
+      this.surfists = paginationData.data;
+    });
   }
 }

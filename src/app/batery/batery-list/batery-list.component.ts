@@ -17,8 +17,9 @@ export class BateryListComponent implements OnInit {
   }
 
   getBateries() {
-    this._bateryServ.getAllBateries().subscribe(bats => {
-      this.bateries = bats;
+    this._bateryServ.getAllBateries().subscribe(paginationData => {
+      this.bateries = paginationData.data;
+      console.log(this.bateries);
     });
   }
 

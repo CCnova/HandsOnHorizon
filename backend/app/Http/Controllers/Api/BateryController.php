@@ -15,11 +15,6 @@ class BateryController extends Controller
         $this -> batery = $batery;
     }
 
-    public function waves()
-    {
-        return $this->hasMany('App\Waves');
-    }
-
     public function index()
     {
         return response()->json($this->batery->paginate(5));

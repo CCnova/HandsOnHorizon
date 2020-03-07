@@ -1,5 +1,6 @@
 export interface Wave {
   id: number;
-  scores: number[];
-  surfists: string[]
+  scores: string;
+  participants: string;
+
 }

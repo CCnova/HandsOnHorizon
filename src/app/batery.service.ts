@@ -1,26 +1,28 @@
 import { Injectable, OnInit } from '@angular/core';
 
 import { BATERIES_DATA } from './batery/mock-bateries';
-import { WAVES_DATA } from './batery/mock-waves';
 
 import { Batery } from './batery/batery.model';
 import { Wave } from './batery/wave.model';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BateryService implements OnInit {
-  initialBateries: Batery[] = BATERIES_DATA;
-  initialWaves: Wave[] = WAVES_DATA;
-  constructor() { }
+  private bateriesUrl = 'http://127.0.0.1:8000/api/bateries';
+  initialBateries: Batery[];
+  initialWaves: Wave[];
 
-  ngOnInit() {
+  constructor(private http: HttpClient) { }
 
-  }
+  ngOnInit() {}
 
   getAllBateries(): Observable<Batery[]> {
-    return of(BATERIES_DATA);
+    return this.http.get<Batery[]>(this.bateriesUrl);
   }
 
   registerNewWave(bateryId: number,part: string, scores: string) {

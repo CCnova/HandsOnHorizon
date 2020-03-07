@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { SURFISTS_DATA } from './surfist/mock-surfists';
 import { Surfist } from './surfist/surfist.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SurfistService {
-  surfists: Surfist[] = SURFISTS_DATA;
+  private surfistsUrl: string = 'http://127.0.0.1:8000/api/surfists';
+  surfists: Surfist[];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAllSurfists(): Surfist[] {
-    return this.surfists;
+  getAllSurfists(): Observable<Surfist[]> {
+    return this.http.get<Surfist[]>(this.surfistsUrl);
   }
 
   registerSurfist(sName: string) {
