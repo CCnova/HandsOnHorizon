@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Batery } from '../batery.model';
 import { BateryService } from 'src/app/batery.service';
 
@@ -24,12 +24,18 @@ export class BateryListComponent implements OnInit {
       for(let bat of this.bateries) {
         this.wavesId.push(bat.wavesId.split(',').map(x=>+x));
       }
+
+      console.log(this.bateries);
     });
   }
 
-  bateriesChanged() {
-    this.bateries = this._bateryServ.updateBateries();
+  // bateriesChanged() {
+  //   this.bateries = this._bateryServ.updateBateries();
 
-    console.log(this.bateries);
+  //   console.log(this.bateries);
+  // }
+
+  updateBateries(batId: number) {
+    this.getBateries();
   }
 }

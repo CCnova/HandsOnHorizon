@@ -29,6 +29,7 @@ class BateryController extends Controller
     public function store(Request $request)
     {
         $bateryData = $request -> all();
+
         $this->batery->create($bateryData);
 
         return response()->json(['msg' => 'Bateria criada!'], 201);
@@ -37,9 +38,10 @@ class BateryController extends Controller
     public function update(Request $request, $id)
     {
         $bateryData = $request -> all();
+
         $batery = $this->batery->find($id);
         $batery->update($bateryData);
 
-        return response()->json(['msg' => 'Bateria atualizada!'], 201);
+        return response()->json($batery, 201);
     }
 }

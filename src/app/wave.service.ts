@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Wave } from './batery/wave.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,14 @@ export class WaveService {
     return this.http.get<Wave[]>(this.wavesUrl);
   }
 
-  getWaveById(waveId: number) {
+  getWaveById(waveId: number): Observable<Wave> {
     return this.http.get<Wave>(this.wavesUrl + `/${waveId}`);
+  }
+
+  storeNewWave(newWaveParticipants: string, newWaveScores: string): Observable<number> {
+    return this.http.post<number>(this.wavesUrl, {
+      scores: newWaveScores,
+      participants: newWaveParticipants
+    });
   }
 }

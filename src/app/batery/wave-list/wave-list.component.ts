@@ -16,8 +16,6 @@ export class WaveListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWaves();
-    console.log(this.wavesList);
-    // console.log(this.showWavesId);
   }
 
   getWaves() {

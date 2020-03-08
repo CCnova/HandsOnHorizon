@@ -19,7 +19,7 @@
       <h6 class="card-subtitle mb-2 text-muted">Vencedor: {{ bat.winner }}</h6>
       <app-wave-list [showWavesId]="wavesId[i]"></app-wave-list>
 
-      <app-batery-form [bateryId]="bat.id"></app-batery-form>
+      <app-batery-form [bateryId]="bat.id" (onBateryChanged)="updateBateries($event)"></app-batery-form>
       <app-wave-form [bateryId]="bat.id" (newScoreAdded)="bateriesChanged()"></app-wave-form>
     </div>
   </div>

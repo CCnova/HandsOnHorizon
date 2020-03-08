@@ -6,6 +6,7 @@ import { Batery } from './batery/batery.model';
 import { Wave } from './batery/wave.model';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { WaveService } from './wave.service';
 
 
 
@@ -17,29 +18,47 @@ export class BateryService implements OnInit {
   initialBateries: Batery[];
   initialWaves: Wave[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _waveService: WaveService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getInitialBateries();
+  }
+
+  getInitialBateries() {
+    this.http.get<Batery[]>(this.bateriesUrl).subscribe(paginationData => {
+      this.initialBateries = paginationData.data;
+    });
+  }
 
   getAllBateries(): Observable<Batery[]> {
     return this.http.get<Batery[]>(this.bateriesUrl);
   }
 
+  getBateryById(batId: number): Observable<Batery> {
+    return this.http.get<Batery>(this.bateriesUrl + `/${batId}`);
+  }
+
   registerNewWave(bateryId: number,part: string, scores: string) {
-    const newWaveParticipants = part.split(',');
-    const newWaveScores = scores.split(',').map(x => +x);
+    this._waveService.storeNewWave(part, scores).subscribe(returnedId => {
+      this.getBateryById(bateryId).subscribe(bateryInitState => {
+        let newWaveIds = '';
+        if(bateryInitState.data.wavesId != undefined) {
+          newWaveIds = bateryInitState.data.wavesId + ', ';
+        }
+        newWaveIds = newWaveIds + `${returnedId}`;
 
-    const newWave: Wave = {
-      id: this.initialWaves[this.initialWaves.length - 1].id + 1,
-      surfists: newWaveParticipants,
-      scores: newWaveScores
-    }
+        console.log(returnedId);
 
-    for(let bat of BATERIES_DATA) {
-      if(bat.id === bateryId) {
-        bat.waves.push(newWave);
-      }
-    }
+        const updatedBaterie = {
+          _id: bateryInitState.data.id,
+          wavesId: newWaveIds,
+          winner: bateryInitState.data.winner
+        }
+        // console.log(updatedBaterie);
+        // console.log(newWaveIds);
+         this.updateBaterie(bateryId, updatedBaterie)
+      });
+    });
 
     alert('Onda Registrada com sucesso!');
   }
@@ -59,8 +78,8 @@ export class BateryService implements OnInit {
     }
   }
 
-  updateBateries() {
-    return this.initialBateries;
+  updateBaterie(baterieId: number, newData): Observable<Batery> {
+    return this.http.put<Batery>(this.bateriesUrl + `/${baterieId}`, newData)
   }
 }
 

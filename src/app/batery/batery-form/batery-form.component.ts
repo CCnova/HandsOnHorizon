@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BateryService } from '../../batery.service';
 import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-batery-form',
@@ -11,11 +12,15 @@ export class BateryFormComponent {
   newWaveParticipantsString: string;
   newWaveScoresString: string;
   @Input() bateryId: number;
+  @Output('onBateryChanged') bateryChanged = new EventEmitter<number>();
 
   constructor(private _batService: BateryService) {}
 
-  onSubmit(f: NgForm) {
-    this._batService.registerNewWave(this.bateryId, this.newWaveParticipantsString, this.newWaveScoresString);
+  async onSubmit(f: NgForm) {
+    await this._batService.registerNewWave(this.bateryId, this.newWaveParticipantsString, this.newWaveScoresString)
+
+    this.bateryChanged.emit(this.bateryId);
+
 
     f.reset();
   }
