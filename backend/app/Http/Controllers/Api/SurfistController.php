@@ -17,6 +17,7 @@ class SurfistController extends Controller
 
     public function index()
     {
+        // ->paginate(15)
 
         return response()->json($this->surfist->paginate(15));
     }

@@ -17,13 +17,14 @@ class BateryController extends Controller
 
     public function index()
     {
-        return response()->json($this->batery->paginate(5));
+        // ->paginate(5)
+        return response()->json($this->batery);
     }
 
     public function show(Batery $id)
     {
-        $data = ['data' => $id];
-        return response()->json($data);
+        // $data = ['data' => $id];
+        return response()->json($id);
     }
 
     public function store(Request $request)
