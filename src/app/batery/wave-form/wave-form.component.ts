@@ -19,9 +19,9 @@ export class WaveFormComponent {
   constructor(private _batService: BateryService) {}
 
   onSubmit(f: NgForm) {
-    this._batService.registerNewScore(this.bateryId, parseInt(this.waveNumberString), this.surfistName, parseInt(this.newScoreString));
+    // this._batService.registerNewScore(this.bateryId, parseInt(this.waveNumberString), this.surfistName, parseInt(this.newScoreString));
 
-    this.newScoreAdded.emit()
+    // this.newScoreAdded.emit()
 
     f.reset();
   }

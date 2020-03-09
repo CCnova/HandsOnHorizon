@@ -17,10 +17,10 @@ export class SurfistService {
   }
 
   registerSurfist(sName: string) {
-    const newSurfist: Surfist = {id: this.surfists[this.surfists.length - 1].id + 1, name: sName, points: []};
+    // const newSurfist: Surfist = {id: this.surfists[this.surfists.length - 1].id + 1, name: sName, points: []};
 
-    this.surfists.push(newSurfist);
+    // this.surfists.push(newSurfist);
 
-    console.log(this.surfists);
+    // console.log(this.surfists);
   }
 }

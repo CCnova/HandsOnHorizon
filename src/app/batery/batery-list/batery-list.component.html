@@ -20,7 +20,7 @@
       <app-wave-list [showWavesId]="wavesId[i]"></app-wave-list>
 
       <app-batery-form [bateryId]="bat.id" (onBateryChanged)="updateBateries($event)"></app-batery-form>
-      <app-wave-form [bateryId]="bat.id" (newScoreAdded)="bateriesChanged()"></app-wave-form>
+      <app-wave-form [bateryId]="bat.id"></app-wave-form>
     </div>
   </div>
 </div>

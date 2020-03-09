@@ -26,7 +26,7 @@ export class BateryService implements OnInit {
 
   getInitialBateries() {
     this.http.get<Batery[]>(this.bateriesUrl).subscribe(paginationData => {
-      this.initialBateries = paginationData.data;
+      this.initialBateries = paginationData;
     });
   }
 
@@ -42,17 +42,17 @@ export class BateryService implements OnInit {
     this._waveService.storeNewWave(part, scores).subscribe(returnedId => {
       this.getBateryById(bateryId).subscribe(bateryInitState => {
         let newWaveIds = '';
-        if(bateryInitState.data.wavesId != undefined) {
-          newWaveIds = bateryInitState.data.wavesId + ', ';
+        if(bateryInitState.wavesId != undefined) {
+          newWaveIds = bateryInitState.wavesId + ', ';
         }
         newWaveIds = newWaveIds + `${returnedId}`;
 
         console.log(returnedId);
 
         const updatedBaterie = {
-          _id: bateryInitState.data.id,
+          _id: bateryInitState.id,
           wavesId: newWaveIds,
-          winner: bateryInitState.data.winner
+          winner: bateryInitState.winner
         }
         // console.log(updatedBaterie);
         // console.log(newWaveIds);
@@ -63,20 +63,20 @@ export class BateryService implements OnInit {
     alert('Onda Registrada com sucesso!');
   }
 
-  registerNewScore(bateryId: number, waveId: number, surfistName: string, score: number) {
-    for(let i = 0; i < this.initialBateries.length; i++) {
-      if(this.initialBateries[i].id === bateryId) {
-        for(let j = 0; j < this.initialBateries[i].waves.length; j++) {
-          if(this.initialBateries[i].waves[j].id === waveId) {
-            this.initialBateries[i].waves[j].surfists.push(surfistName);
-            this.initialBateries[i].waves[j].scores.push(score);
+  // registerNewScore(bateryId: number, waveId: number, surfistName: string, score: number) {
+  //   for(let i = 0; i < this.initialBateries.length; i++) {
+  //     if(this.initialBateries[i].id === bateryId) {
+  //       for(let j = 0; j < this.initialBateries[i].waves.length; j++) {
+  //         if(this.initialBateries[i].waves[j].id === waveId) {
+  //           this.initialBateries[i].waves[j].surfists.push(surfistName);
+  //           this.initialBateries[i].waves[j].scores.push(score);
 
-            console.log(this.initialBateries);
-          }
-        }
-      }
-    }
-  }
+  //           console.log(this.initialBateries);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   updateBaterie(baterieId: number, newData): Observable<Batery> {
     return this.http.put<Batery>(this.bateriesUrl + `/${baterieId}`, newData)
