@@ -21,6 +21,9 @@ export class WaveFormComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
+    this._waveService.storeNewWave(this.newParticipants, this.newScores).subscribe(res => {
+      console.log(`New wave id: ${res}`);
+    });
 
     f.reset();
   }

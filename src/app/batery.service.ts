@@ -1,7 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
 
-import { BATERIES_DATA } from './batery/mock-bateries';
-
 import { Batery } from './batery/batery.model';
 import { Wave } from './batery/wave.model';
 import { Observable, of } from 'rxjs';
