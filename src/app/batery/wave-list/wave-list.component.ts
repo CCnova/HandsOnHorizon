@@ -21,7 +21,7 @@ export class WaveListComponent implements OnInit {
   getWaves() {
     this._waveService.getAllWaves().subscribe(paginationData => {
       for(let id of this.showWavesId) {
-        for(let wave of paginationData.data) {
+        for(let wave of paginationData) {
           if(wave.id === id) {
             this.wavesList.push(wave);
           }

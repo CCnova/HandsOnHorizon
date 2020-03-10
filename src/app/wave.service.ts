@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Wave } from './batery/wave.model';
 import { Observable } from 'rxjs';
+import { WaveRes } from './wave/wave-res.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class WaveService {
 
   constructor(private http: HttpClient) { }
 
-  getAllWaves() {
-    return this.http.get<Wave[]>(this.wavesUrl);
+  getAllWaves(): Observable<WaveRes> {
+    return this.http.get<WaveRes>(this.wavesUrl);
   }
 
   getWaveById(waveId: number): Observable<Wave> {

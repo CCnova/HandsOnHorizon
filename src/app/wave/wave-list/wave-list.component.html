@@ -1,0 +1,18 @@
+<div class="container" *ngIf="waves">
+  <div class="row">
+  <div *ngFor="let wave of waves; let i = index" class="card" style="width: 18rem;">
+    <div class="card-body col-sm">
+      <h5 class="card-title">Onda {{ wave.id }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Notas: {{ wave.scores }}</h6>
+
+      <p class="card-text">
+        Participantes: {{ wave.participants}} <br>
+      </p>
+    </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <app-wave-form></app-wave-form>
+  </div>
+</div>

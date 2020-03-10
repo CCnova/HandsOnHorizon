@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Surfist } from './surfist/surfist.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SurfistRes } from './surfist/surfist-res.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class SurfistService {
 
   constructor(private http: HttpClient) { }
 
-  getAllSurfists(): Observable<Surfist[]> {
-    return this.http.get<Surfist[]>(this.surfistsUrl);
+  getAllSurfists(): Observable<SurfistRes> {
+    return this.http.get<SurfistRes>(this.surfistsUrl);
   }
 
   registerSurfist(sName: string) {

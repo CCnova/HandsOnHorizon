@@ -19,7 +19,7 @@ export class BateryListComponent implements OnInit {
 
   getBateries() {
     this._bateryServ.getAllBateries().subscribe(paginationData => {
-      this.bateries = paginationData.data;
+      this.bateries = paginationData;
 
       for(let bat of this.bateries) {
         this.wavesId.push(bat.wavesId.split(',').map(x=>+x));

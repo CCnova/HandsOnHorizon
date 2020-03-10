@@ -1,0 +1,9 @@
+<h4>Cadastre uma onda</h4>
+<form #waveForm="ngForm" (ngSubmit)="onSubmit(waveForm)">
+  <div class="form-group">
+    <label for="participantsName">Cadastrar participantes(Separar nomes e pontos com virgula):</label>
+    <input type="text" [(ngModel)]="newParticipants" class="form-control" id="participantsName" name="name" required placeholder="Escreva os nomes">
+    <input type="text" [(ngModel)]="newScores" class="form-control" id="participantsScores" name="scores" required placeholder="Escreva as respectivas pontuacoes">
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar Onda</button>
+</form>

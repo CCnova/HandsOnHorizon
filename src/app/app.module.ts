@@ -12,8 +12,9 @@ import { SurfistFormComponent } from './surfist/surfist-form/surfist-form.compon
 import { BateryComponent } from './batery/batery.component';
 import { BateryListComponent } from './batery/batery-list/batery-list.component';
 import { BateryFormComponent } from './batery/batery-form/batery-form.component';
-import { WaveFormComponent } from './batery/wave-form/wave-form.component';
-import { WaveListComponent } from './batery/wave-list/wave-list.component';
+import { WaveComponent } from './wave/wave.component';
+import { WaveListComponent } from './wave/wave-list/wave-list.component';
+import { WaveFormComponent } from './wave/wave-form/wave-form.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,9 @@ import { WaveListComponent } from './batery/wave-list/wave-list.component';
     BateryComponent,
     BateryListComponent,
     BateryFormComponent,
-    WaveFormComponent,
-    WaveListComponent
+    WaveListComponent,
+    WaveComponent,
+    WaveFormComponent
   ],
   imports: [
     BrowserModule,
