@@ -22,8 +22,8 @@ class WaveController extends Controller
 
     public function show(Wave $id)
     {
-        $data = ['data' => $id];
-        return response()->json($data);
+        // $data = ['data' => $id];
+        return response()->json($id);
     }
 
     public function store(Request $request)

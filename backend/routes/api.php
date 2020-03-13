@@ -31,7 +31,7 @@ Route::namespace('Api')->name('api.')->group(function() {
 Route::namespace('Api')->name('api.')->group(function() {
     Route::prefix('/bateries')->group(function() {
         Route::get('/', 'BateryController@index')->name('index_bateries');
-        Route::get('/{id}', 'BateryController@show')->name('single_bateries');
+        Route::get('/{id}', 'BateryController@getWinner')->name('single_bateries');
 
         Route::post('/', 'BateryController@store')->name('store_bateries');
         Route::put('/{id}', 'BateryController@update')->name('update_bateries');

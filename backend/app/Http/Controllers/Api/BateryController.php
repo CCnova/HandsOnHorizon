@@ -45,4 +45,47 @@ class BateryController extends Controller
 
         return response()->json($batery, 201);
     }
+
+
+    /*
+                OBTEM O VENCEDOR DA BATERIA
+    */
+    public function getWinner(Request $request, $bateryId)
+    {
+        $bateryWaves = Batery::find($bateryId)->waves;
+        $baterySurfists = array();
+
+        foreach($bateryWaves as $wave)
+        {
+            $aux = explode(", ", $wave["participants"]);
+            array_merge($baterySurfists, $aux);
+        }
+
+        $participantsTotalPoints = array();
+        foreach($baterySurfists as $surf)
+        {
+            $partialScores = array_map("intval", explode(", ",$surf->points));
+            $maxScore = $this->findBiggerMember($partialScores, -1);
+            array_push($participantsTotalPoints, $maxScore);
+        }
+
+        $winner = $baterySurfists[$this->findBiggerMember($participantsTotalPoints, -1)];
+
+        return response()->json($winner);
+    }
+
+    public function findBiggerMember($numArray, $filterIndex)
+    {
+        $max = 0;
+        $maxIndex = -1;
+        for($i = 0; $i < count($numArray); $i++)
+        {
+            if($numArray[$i] > $max && $i != $filterIndex)
+            {
+                $maxIndex = $i;
+            }
+        }
+
+        return $maxIndex;
+    }
 }
