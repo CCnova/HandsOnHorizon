@@ -65,8 +65,10 @@ class BateryController extends Controller
         foreach($baterySurfists as $surf)
         {
             $partialScores = array_map("intval", explode(", ",$surf->points));
-            $maxScore = $this->findBiggerMember($partialScores, -1);
-            array_push($participantsTotalPoints, $maxScore);
+            $maxScoreIndex = $this->findBiggerMember($partialScores, -1);
+            $secondMaxScoreIndex = $this->findBiggerMember($partialScores, $maxScoreIndex);
+
+            array_push($participantsTotalPoints, $partialScores[$maxScoreIndex] + $partialScores[$secondMaxScoreIndex]);
         }
 
         $winner = $baterySurfists[$this->findBiggerMember($participantsTotalPoints, -1)];
